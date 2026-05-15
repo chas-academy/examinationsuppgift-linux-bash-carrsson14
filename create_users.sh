@@ -26,12 +26,10 @@ for username in "$@"; do
     # Sätt rättigheter (Endast ägare får läsa/skriva/exekvera)
     chmod 700 "$user_home/Documents" "$user_home/Downloads" "$user_home/Work"
     
-    # Skapa välkomstfil med exakt formatering
     WELCOME_FILE="$user_home/welcome.txt"
-
     echo "Välkommen $username" > "$WELCOME_FILE"
-    
     cut -d: -f1 /etc/passwd | sort >> "$WELCOME_FILE"
+    chown -R "$username:$username" "$user_home"
  
     # Ändra ägare till den nya användaren
     chown -R "$username:$username" "$user_home"
