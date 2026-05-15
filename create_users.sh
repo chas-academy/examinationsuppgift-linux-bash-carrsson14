@@ -29,8 +29,7 @@ for username in "$@"; do
     WELCOME_FILE="$user_home/welcome.txt"
     echo "Välkommen $username" > "$WELCOME_FILE"
     cut -d: -f1 /etc/passwd | sort >> "$WELCOME_FILE"
-    chown -R "$username:$username" "$user_home"
- 
+    
     # Ändra ägare till den nya användaren
     chown -R "$username:$username" "$user_home"
 done
