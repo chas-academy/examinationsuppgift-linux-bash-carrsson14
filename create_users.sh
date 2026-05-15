@@ -31,7 +31,7 @@ for username in "$@"; do
 
     echo "Välkommen $username" > "$WELCOME_FILE"
     echo "Andra användare i systemet:" >> "$WELCOME_FILE"
-    cut -d: -f1 /etc/passwd >> "$WELCOME_FILE"
+    cut -d: -f1 /etc/passwd | sort >> "$WELCOME_FILE"
 
       # Ändra ägare till den nya användaren
     chown -R "$username:$username" "$user_home"
